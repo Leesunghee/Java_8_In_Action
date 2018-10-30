@@ -95,5 +95,4 @@ fabric.properties
 .gitignore
 .idea/
 Java_8_In_Action.iml
-pom.xml
-src/
+
