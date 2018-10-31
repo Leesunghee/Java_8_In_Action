@@ -23,13 +23,15 @@ public class AppleMain {
                                                 new Apple("green", 155),
                                                 new Apple("red", 120));
 
-        List<Apple> greenApples = filterApples(inventory, new AppleGreenColorPredicate());
-        List<Apple> heavyApplas = filterApples(inventory, new AppleHeavyWeightPredicate());
+//        List<Apple> greenApples = filterApples(inventory, new AppleGreenColorPredicate());
+//        List<Apple> heavyApplas = filterApples(inventory, new AppleHeavyWeightPredicate());
+//
+//        List<Apple> readApples = filterApples(inventory, new ApplePredicate() {
+//            public boolean test(Apple apple) {
+//                return "red".equals(apple.getColor());
+//            }
+//        });
 
-        List<Apple> readApples = filterApples(inventory, new ApplePredicate() {
-            public boolean test(Apple apple) {
-                return "red".equals(apple.getColor());
-            }
-        });
+        List<Apple> redApples = filterApples(inventory, (Apple apple) -> "red".equals(apple.getColor()));
     }
 }
