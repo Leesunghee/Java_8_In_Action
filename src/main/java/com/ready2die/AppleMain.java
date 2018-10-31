@@ -6,20 +6,11 @@ import java.util.List;
 public class AppleMain {
 
 
-    public static List<Apple> filterApplesByColor(List<Apple> inventory, String color) {
+    public static List<Apple> filterApples(List<Apple> inventory, String color, int weight, boolean flag) {
         List<Apple> result = new ArrayList<Apple>();
         for (Apple apple : inventory) {
-            if (color.equals(apple.getColor())) {
-                result.add(apple);
-            }
-        }
-        return result;
-    }
-
-    public static List<Apple> filterApplesByWeight(List<Apple> inventory, int weight) {
-        List<Apple> result = new ArrayList<Apple>();
-        for (Apple apple : inventory) {
-            if (apple.getWeight() > weight)  {
+            if ((flag && color.equals(apple.getColor())) ||
+                (!flag && apple.getWeight() > weight)) {
                 result.add(apple);
             }
         }
@@ -32,8 +23,8 @@ public class AppleMain {
         List<Apple> inventory = new ArrayList<Apple>();
         inventory.add(apple);
 
-        List<Apple> greenApple = filterApplesByColor(inventory, "green");
-        List<Apple> redApple = filterApplesByColor(inventory, "red");
+        List<Apple> greenApples = filterApples(inventory, "green", 0, true);
+        List<Apple> heavyApplas = filterApples(inventory, "", 150, false);
 
     }
 }
