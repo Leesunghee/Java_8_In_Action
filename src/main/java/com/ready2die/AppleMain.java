@@ -6,11 +6,10 @@ import java.util.List;
 public class AppleMain {
 
 
-    public static List<Apple> filterApples(List<Apple> inventory, String color, int weight, boolean flag) {
+    public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate applePredicate) {
         List<Apple> result = new ArrayList<Apple>();
         for (Apple apple : inventory) {
-            if ((flag && color.equals(apple.getColor())) ||
-                (!flag && apple.getWeight() > weight)) {
+            if (applePredicate.test(apple)) {
                 result.add(apple);
             }
         }
@@ -23,8 +22,8 @@ public class AppleMain {
         List<Apple> inventory = new ArrayList<Apple>();
         inventory.add(apple);
 
-        List<Apple> greenApples = filterApples(inventory, "green", 0, true);
-        List<Apple> heavyApplas = filterApples(inventory, "", 150, false);
+        List<Apple> greenApples = filterApples(inventory, new AppleGreenColorPredicate());
+        List<Apple> heavyApplas = filterApples(inventory, new AppleHeavyWeightPredicate());
 
     }
 }
