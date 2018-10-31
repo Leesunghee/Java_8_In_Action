@@ -1,6 +1,7 @@
 package com.ready2die;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class AppleMain {
@@ -18,12 +19,17 @@ public class AppleMain {
 
     public static void main(String[] args) {
 
-        Apple apple = new Apple("green");
-        List<Apple> inventory = new ArrayList<Apple>();
-        inventory.add(apple);
+        List<Apple> inventory = Arrays.asList(new Apple("green", 80),
+                                                new Apple("green", 155),
+                                                new Apple("red", 120));
 
         List<Apple> greenApples = filterApples(inventory, new AppleGreenColorPredicate());
         List<Apple> heavyApplas = filterApples(inventory, new AppleHeavyWeightPredicate());
 
+        List<Apple> readApples = filterApples(inventory, new ApplePredicate() {
+            public boolean test(Apple apple) {
+                return "red".equals(apple.getColor());
+            }
+        });
     }
 }
